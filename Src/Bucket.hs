@@ -1,6 +1,16 @@
 module Src.Bucket where
 
-data Bucket = Bucket {capacity :: Int, current :: Int} deriving (Eq, Show)
+import Data.List
+import Data.List
+
+type Volume = Int
+data Bucket = Bucket {capacity :: Volume, current :: Volume} deriving (Eq)
+
+instance Show Bucket where
+  show = show . current
+
+new :: Volume -> Bucket
+new v = Bucket v 0
 
 fill :: Bucket -> Bucket
 fill b = b {current = capacity b}
